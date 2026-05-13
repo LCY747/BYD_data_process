@@ -13,7 +13,7 @@ start_time = time.time()
 # =============================================================================
 # 数据导入：整体全部导入，在波长解耦哪步再进行分组区分
 # =============================================================================
-file_path = r"E:\Documents\BYD电池测试\数据文件\20260317_50_cycle\39_50_cycle"    # 文件路径
+file_path = r"E:\Documents\BYD电池测试\数据文件\20260508_50_100_cycle"   # 文件路径
 # 获取当前文件路径下所有的txt文件
 txt_files = glob.glob(f"{file_path}/*.txt")
 # 整合所有txt文件
@@ -38,8 +38,8 @@ column_titles = [lines[0].strip().split('\t')]
 
 
 # 拟提取的片段数据
-startTime = 20260321104945
-endTime =   20260322134318
+startTime = 20260508095838
+endTime = 20260513031718
 
 
 # =============================================================================
@@ -74,11 +74,11 @@ WL0_strain_top = np.array([1529.8198	,1531.7773	,1533.6188	,1535.5896	,1537.4503
 
 # 提取6根光纤传感器的位置索引
 index_FOS1 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道2'])]      # 侧边温度
-index_FOS2 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道5'])]      # 侧边应变
+index_FOS2 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道11'])]      # 侧边应变
 index_FOS3 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道1'])]      # 大面中温度
 index_FOS4 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道6'])]      # 大面中应变
 index_FOS5 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道0'])]      # 大面上温度
-index_FOS6 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道8'])]      # 大面上应变
+index_FOS6 = [i for i, item in enumerate(column_titles[0]) if any(re.search(rf"\b{ch}\b", item) for ch in ['通道10'])]      # 大面上应变
 
 
 #-------------------------------数据存储数组初始化------------------------------#
@@ -110,7 +110,7 @@ for i in range(len(merged_data)):
     # 解调仪采集的数据
     current_FBG_data = np.array(merged_data[i])
     # 判断数据是否满足要求（数据总列数）
-    if len(current_FBG_data) == 128:
+    if len(current_FBG_data) == 110:
         # 侧面温度测量光纤波长数据
         current_WL_temper_broadside = current_FBG_data[index_FOS1][::2].astype(float)
         # 侧面应变测量光纤波长数据
