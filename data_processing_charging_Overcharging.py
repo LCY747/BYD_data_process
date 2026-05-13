@@ -39,7 +39,7 @@ column_titles = [lines[0].strip().split('\t')]
 
 # 拟提取的片段数据
 startTime = 20260508095838
-endTime = 20260513031718
+endTime = 20260512125902
 
 
 # =============================================================================
@@ -104,8 +104,13 @@ Time_data = []
 #---------------------------------光纤传感器数据解析----------------------------#
 # 循环处理光纤传感器数据
 for i in range(len(merged_data)):
-    # 时间数据存储
-    Time_data.append(merged_data[i][0])
+
+    # 时间数据存储 + 自动过滤异常行
+    time_str = merged_data[i][0]
+    if 15 <= len(str(time_str)) <= 30:
+       Time_data.append(time_str)
+    else:
+       continue  # 跳过坏行
     
     # 解调仪采集的数据
     current_FBG_data = np.array(merged_data[i])
