@@ -45,7 +45,7 @@ def interpolate_excel(input_file, output_file=None):
 
 # 使用示例
 if __name__ == "__main__":
-    input_path = "E:\\Documents\\BYD电池测试\\数据文件\\20260315_low_C_Rate\\数据汇总_filtered.xlsx"         # 替换为实际文件路径
+    input_path = r"E:\Documents\BYD电池测试\数据文件\20260313_HPPC\数据汇总_filtered.xlsx"         # 替换为实际文件路径
     interpolate_excel(input_path)
 
 end_time = time.time()

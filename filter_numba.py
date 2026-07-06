@@ -144,7 +144,7 @@ if __name__ == "__main__":
         'Top_Temperature': 3.0,
         'Top_Strain': 2.5,
     }
-    input_file = r"E:\Documents\BYD电池测试\数据文件\20260317_50_cycle\39_50_cycle\数据汇总.xlsx"
+    input_file = r"E:\Documents\BYD电池测试\数据文件1\20260628_SCT_300cycle\数据汇总.xlsx"
     # 窗口半径可根据数据密集程度调整，建议5-10；默认阈值用于未列出的工作表
     process_excel(input_file, thresholds=thresholds, default_threshold=3.0, window=10)
 
